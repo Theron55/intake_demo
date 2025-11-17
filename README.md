@@ -1,32 +1,52 @@
-# intake_demo
-🚀 Immigration Workflow Automation Demo
-AI-assisted client intake, document upload, and case summary automation for immigration law firms.
-This project is a functional demo of a lightweight automation system designed for immigration lawyers. It collects client intake data, manages required document uploads, generates automatic summaries, and provides a clean dashboard for case tracking.
+# Workflow Automation Demo
 
-✨ Features
-📝 Client Intake Form
-Clean, structured intake designed for immigration cases
-Organized sections: Personal Info, Case Type, Immigration Background, Logistics
-Automatically generates an internal case summary
-Supports bilingual intake (English & Spanish) — Pro Feature
-📤 Client Document Upload
-Upload multiple files (PDF, images, etc.)
-Automatically tracks whether a case is None / Partial / Complete
-Files stored locally in uploads/
-📊 Attorney Dashboard
-Shows all clients in a sortable table
-Summaries, statuses, and document counts at a glance
-"View Client" page displaying full case details + documents
-📧 Automatic Email Notifications (Demo Only)
-After document upload, the system prints a “fake email” to the console
-Easy to swap in real email providers (SendGrid, Gmail API, Mailgun, etc.)
-💬 AI Summary (Mocked, but fully pluggable)
-Generates a human-like summary of the client case
-Can be upgraded easily to real OpenAI API calls
-🔐 Simple SQLite Database
-All clients and documents stored in demo.db
-SQLAlchemy ORM models for easy extension
-🗂️ Project Structure
+AI-assisted client intake, document upload, and case summary automation for immigration law firms.
+
+This project is a functional demo of a lightweight automation system designed for immigration attorneys. It collects client intake data, manages uploaded documents, generates automatic summaries, and provides a clean internal dashboard for case tracking.
+
+---
+
+## Features
+
+### Client Intake Form
+
+* Clean, structured intake designed specifically for immigration cases
+* Organized sections: Personal Info, Case Type, Immigration Background, Logistics
+* Automatically generates an internal case summary
+* Supports bilingual intake (English & Spanish) — Pro Feature
+
+### Document Upload
+
+* Clients can upload multiple files (PDF, JPG, PNG, etc.)
+* Case status updates automatically (None / Partial / Complete)
+* Files stored locally in the `uploads/` folder
+
+### Attorney Dashboard
+
+* Displays all clients with key details
+* Shows document count, summary preview, and submission date
+* “View Client” page for full case detail and document list
+
+### Automatic Email Notifications (Demo Only)
+
+* Prints a “fake email” in the backend console after document upload
+* Can be replaced with real email providers: SendGrid, Gmail API, Mailgun, etc.
+
+### AI Summary (Mocked but Upgradable)
+
+* Generates human-like case summaries based on form inputs
+* Ready for OpenAI API integration
+
+### SQLite Database via SQLAlchemy
+
+* All client data stored in `demo.db`
+* ORM models allow easy expansion
+
+---
+
+## Project Structure
+
+```
 immigration_demo/
 │
 ├── app.py                # Main Flask application
@@ -42,53 +62,106 @@ immigration_demo/
 │   └── client_detail.html
 │
 └── uploads/              # Uploaded documents (ignored in git)
-🛠️ Installation
+```
+
+---
+
+## Installation
+
 Clone the repository:
+
+```bash
 git clone https://github.com/YOURNAME/immigration-demo.git
 cd immigration-demo
+```
+
 Create a virtual environment:
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
+
 Install dependencies:
+
+```bash
 pip install flask flask_sqlalchemy
+```
+
 Run the server:
+
+```bash
 python app.py
-Visit the app:
+```
+
+Open the app in your browser:
+
+```
 http://127.0.0.1:5000
-🌐 Multi-Language Intake (Pro Feature)
+```
+
+---
+
+## Multi-Language Intake (Pro Feature)
+
 The intake form includes a language dropdown:
-English (?lang=en)
-Español (?lang=es)
-Labels are stored in a Python dictionary, making it easy to add more languages later (Somali, Vietnamese, Russian, etc.).
-🧩 Roadmap
-Near-term
-Add real OpenAI summary generation
-Add authentication for attorneys
-Add downloadable PDF client dossiers
-Add mobile-optimized intake
-Mid-term
-Cloud file storage (AWS S3)
-Email + SMS notifications
-Calendar integrations (Calendly / Google Calendar)
-Long-term
-Client portal
-Firm-wide case analytics
-Full SaaS product launch
-🤝 Contributing
+
+* English (default)
+* Español (Spanish)
+
+Labels and section text are stored in a Python dictionary, allowing easy expansion into additional languages such as Somali, Vietnamese, Mandarin, Russian, etc.
+
+---
+
+## Roadmap
+
+### Short Term
+
+* Real OpenAI-powered summaries
+* Attorney login system
+* Mobile-friendly intake templates
+
+### Medium Term
+
+* Cloud document storage (AWS S3)
+* Email and SMS notifications
+* Calendar integration (Google Calendar / Calendly)
+
+### Long Term
+
+* Client portal
+* Analytics dashboard
+* Full SaaS deployment
+
+---
+
+## Contributing
+
 Pull requests are welcome.
-If you find bugs or want features, open an issue or message the repository owner.
-📄 License
-This project is for portfolio/demo use only and not intended for production without additional security, encryption, and compliance features.
-👤 Author
-Theron Hamlin
-AI Automation Engineer
-Immigration Workflow & Document Automation
-GitHub: https://github.com/YOURNAME
-Email: your.email@example.com
+For bugs or feature requests, please open an issue on GitHub.
 
+---
 
+## License
 
+This project is provided for demonstration and portfolio purposes only and is **not production-ready**. A real deployment would require additional security, authentication, encryption, and compliance measures.
 
+---
 
+## Author
 
-ChatGPT can make mistakes. Check important info.
+**Theron Hamlin**
+AI Automation Developer — Immigration Workflow Systems
+GitHub: [https://github.com/YOURNAME](https://github.com/YOURNAME)
+Email: [your.email@example.com](mailto:your.email@example.com)
+
+---
+
+If you want, I can:
+
+* Add screenshots
+* Add animated GIF of the demo flow
+* Add OpenAI integration setup
+* Add deployment instructions (Netlify, Render, Fly.io)
+
+Just tell me.
