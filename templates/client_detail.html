@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Client Detail</h1>
+
+<h2 style="margin-bottom:0.2rem;">{{ client.full_name }}</h2>
+<p style="margin-top:0;">
+  {{ client.email }}{% if client.phone %} • {{ client.phone }}{% endif %}
+</p>
+
+<hr style="margin:1rem 0;">
+
+<h3>Case Overview</h3>
+<ul>
+  <li><strong>Case type:</strong> {{ client.case_type or "Not specified" }}</li>
+  <li><strong>Country of citizenship:</strong> {{ client.country_citizenship or "-" }}</li>
+  <li><strong>Location:</strong> {{ client.current_city_country or "-" }}</li>
+  <li><strong>In U.S.:</strong> {{ client.in_us or "-" }}</li>
+  <li><strong>Current status:</strong> {{ client.current_status or "-" }}</li>
+  <li><strong>Urgency:</strong> {{ client.urgency or "-" }}</li>
+  <li><strong>Preferred communication:</strong> {{ client.communication or "-" }}</li>
+</ul>
+
+<h3>Risk Flags</h3>
+<ul>
+  <li><strong>Arrest / conviction:</strong> {{ client.arrest_history or "Unknown" }}</li>
+  <li><strong>Prior deportation / removal:</strong> {{ client.deported or "Unknown" }}</li>
+  <li><strong>Overstayed visa:</strong> {{ client.overstayed or "Unknown" }}</li>
+</ul>
+
+{% if client.prior_applications %}
+  <h3>Prior Applications</h3>
+  <p>{{ client.prior_applications }}</p>
+{% endif %}
+
+{% if client.background_notes %}
+  <h3>Client Notes</h3>
+  <p>{{ client.background_notes }}</p>
+{% endif %}
+
+<h3>AI-Style Summary</h3>
+<pre style="white-space:pre-wrap; background:#f9fafb; padding:0.75rem 1rem; border-radius:0.5rem; border:1px solid #e5e7eb;">
+{{ client.summary or "No summary generated." }}
+</pre>
+
+<h3>Documents Received</h3>
+{% if client.documents %}
+  <ul>
+    {% for doc in client.documents %}
+      <li>
+        {{ doc.filename }}
+        <span style="font-size:0.75rem;color:#6b7280;">
+          • uploaded {{ doc.uploaded_at.strftime("%Y-%m-%d %H:%M") }}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No documents uploaded yet.</p>
+{% endif %}
+
+<h3>Pipeline Status</h3>
+<ul>
+  <li><strong>Docs received:</strong> {{ client.docs_received }}</li>
+  <li><strong>Status:</strong> {{ client.status }}</li>
+  <li><strong>Next action:</strong> {{ client.next_action }}</li>
+</ul>
+
+<p style="margin-top:1.5rem;">
+  <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+</p>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Case Pipeline Dashboard</h1>
+<p>This is the internal view for the law office showing all leads and their status.</p>
+
+{% if clients %}
+<table>
+  <thead>
+    <tr>
+      <th>Created</th>
+      <th>Client</th>
+      <th>Case Type</th>
+      <th>Docs</th>
+      <th>Status</th>
+      <th>Next Action</th>
+      <th>Summary (preview)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in clients %}
+      <tr>
+        <td>{{ c.created_at.strftime("%Y-%m-%d") }}</td>
+        <td>
+          <a href="{{ url_for('client_detail', client_id=c.id) }}" style="text-decoration:none; color:#1d4ed8; font-weight:600;">
+            {{ c.full_name or "Unnamed" }}
+          </a>
+          <br>
+          <span style="font-size:0.75rem;color:#6b7280;">
+            {{ c.email }}
+          </span>
+        </td>
+        <td>{{ c.case_type or "-" }}</td>
+        <td>
+          {% if c.docs_received == "Complete" %}
+            <span class="pill pill-green">Complete</span>
+          {% elif c.docs_received == "Partial" %}
+            <span class="pill pill-yellow">Partial</span>
+          {% else %}
+            <span class="pill pill-gray">None</span>
+          {% endif %}
+        </td>
+        <td>{{ c.status }}</td>
+        <td style="font-size:0.8rem;">{{ c.next_action }}</td>
+        <td style="font-size:0.8rem; max-width:250px;">
+          <pre style="white-space:pre-wrap; margin:0;">{{ (c.summary or "")[:200] }}{% if c.summary and c.summary|length > 200 %}...{% endif %}</pre>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No clients yet. Submit the intake form to see them appear here.</p>
+{% endif %}
+{% endblock %}
+

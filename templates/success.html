@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Documents Uploaded</h1>
+<p>Client: <strong>{{ client.full_name }}</strong></p>
+
+{% if count > 0 %}
+  <p>{{ count }} file(s) uploaded successfully.</p>
+{% else %}
+  <p>No files were uploaded, but the request was processed.</p>
+{% endif %}
+
+<p>You can now view this client in the dashboard.</p>
+
+<a class="btn" href="{{ url_for('dashboard') }}">View Dashboard</a>
+{% endblock %}

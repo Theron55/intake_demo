@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Upload Documents</h1>
+<p>Client: <strong>{{ client.full_name }}</strong> ({{ client.email }})</p>
+
+<p>This simulates the secure upload link your clients receive after completing intake.</p>
+
+<h3>Suggested Documents for Demo</h3>
+<ul>
+  <li>Passport (photo page)</li>
+  <li>Current or expired visas</li>
+  <li>I-94 record (if available)</li>
+  <li>Prior immigration decisions</li>
+</ul>
+
+<form method="post" enctype="multipart/form-data">
+  <label>Select one or more files to upload:
+    <input type="file" name="documents" multiple>
+  </label>
+  <button class="btn" type="submit">Upload Documents</button>
+</form>
+
+<p style="margin-top:1rem;">
+  <a class="btn btn-secondary" href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+</p>
+{% endblock %}

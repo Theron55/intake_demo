@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>New Immigration Client Intake</h1>
+<p>This is the automated intake form your clients would complete online.</p>
+
+<form method="post" action="{{ url_for('intake') }}">
+  <h3>Personal Information</h3>
+  <label>Full Name
+    <input type="text" name="full_name" required>
+  </label>
+  <label>Email
+    <input type="email" name="email" required>
+  </label>
+  <label>Phone
+    <input type="tel" name="phone">
+  </label>
+  <label>Country of Citizenship
+    <input type="text" name="country_citizenship">
+  </label>
+  <label>Current City &amp; Country
+    <input type="text" name="current_city_country">
+  </label>
+  <label>Date of Birth
+    <input type="date" name="dob">
+  </label>
+
+  <h3>Case Type &amp; Goal</h3>
+  <label>What are you seeking help with?
+    <select name="case_type">
+      <option value="">Select…</option>
+      <option>Family-based immigration</option>
+      <option>Employment-based immigration</option>
+      <option>Student visa</option>
+      <option>Asylum / humanitarian</option>
+      <option>Green card</option>
+      <option>Citizenship / naturalization</option>
+      <option>Other</option>
+    </select>
+  </label>
+
+  <label>Are you currently in the U.S.?
+    <select name="in_us">
+      <option value="">Select…</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </label>
+
+  <label>If yes, what is your current status?
+    <input type="text" name="current_status" placeholder="e.g., B2 visitor, F1 student, undocumented">
+  </label>
+
+  <label>Have you ever applied for an immigration benefit before?
+    <input type="text" name="prior_applications" placeholder="Briefly describe, if yes">
+  </label>
+
+  <h3>Background</h3>
+  <label>Have you ever been arrested or convicted of a crime?
+    <select name="arrest_history">
+      <option value="">Select…</option>
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+  </label>
+
+  <label>Have you ever been deported or removed from any country?
+    <select name="deported">
+      <option value="">Select…</option>
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+  </label>
+
+  <label>Have you ever overstayed a visa?
+    <select name="overstayed">
+      <option value="">Select…</option>
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+  </label>
+
+  <label>Anything else the attorney should know?
+    <textarea name="background_notes"></textarea>
+  </label>
+
+  <h3>Logistics</h3>
+  <label>How soon do you need help?
+    <select name="urgency">
+      <option value="">Select…</option>
+      <option>ASAP</option>
+      <option>1–3 months</option>
+      <option>3+ months</option>
+    </select>
+  </label>
+
+  <label>Preferred way to communicate
+    <select name="communication">
+      <option value="">Select…</option>
+      <option>Email</option>
+      <option>Phone</option>
+      <option>WhatsApp</option>
+      <option>Other</option>
+    </select>
+  </label>
+
+  <label>How did you hear about the law office?
+    <input type="text" name="referral_source">
+  </label>
+
+  <button class="btn" type="submit">Submit Intake &amp; Continue to Document Upload</button>
+</form>
+{% endblock %}
